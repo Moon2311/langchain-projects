@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talha Abdul Sattar - CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f3f4f6;
+      color: #1a1a1a;
+      line-height: 1.5;
+      padding: 20px;
+    }
+
+    .download-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+      transition: all 0.3s;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .download-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
+    }
+
+    .cv-container {
+      max-width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: white;
+      padding: 15mm 12mm;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    /* ATS-Friendly Keywords (Hidden but readable by ATS) */
+    .ats-keywords {
+      position: absolute;
+      left: -9999px;
+      font-size: 1px;
+      color: transparent;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      border-bottom: 3px solid #2563eb;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .name {
+      font-size: 36px;
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+
+    .title {
+      font-size: 14px;
+      color: #2563eb;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .contact-bar {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 11px;
+      color: #4b5563;
+    }
+
+    .contact-bar a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    .contact-bar span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 5px;
+      margin-bottom: 12px;
+    }
+
+    /* Experience */
+    .experience-item {
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 3px;
+    }
+
+    .company {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .duration {
+      font-size: 10px;
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    .role {
+      font-size: 12px;
+      color: #2563eb;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .exp-content ul {
+      list-style: none;
+      margin-left: 0;
+      font-size: 10.5px;
+      color: #374151;
+      line-height: 1.5;
+    }
+
+    .exp-content li {
+      position: relative;
+      padding-left: 12px;
+      margin-bottom: 2px;
+    }
+
+    .exp-content li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    /* Projects */
+    .project-item {
+      margin-bottom: 10px;
+      page-break-inside: avoid;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 3px;
+    }
+
+    .project-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .fyp-badge {
+      background: #dc2626;
+      color: white;
+      font-size: 8px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .project-desc {
+      font-size: 10.5px;
+      color: #374151;
+      margin-bottom: 3px;
+      line-height: 1.5;
+    }
+
+    .tech-stack {
+      font-size: 9.5px;
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    .tech-stack strong {
+      color: #2563eb;
+      font-weight: 600;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 16px;
+    }
+
+    .skill-category {
+      page-break-inside: avoid;
+    }
+
+    .skill-cat-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 3px;
+    }
+
+    .skill-items {
+      font-size: 10px;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    /* Education */
+    .edu-item {
+      page-break-inside: avoid;
+    }
+
+    .degree {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2px;
+    }
+
+    .university {
+      font-size: 11px;
+      color: #374151;
+      margin-bottom: 2px;
+    }
+
+    .certification {
+      font-size: 10px;
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    /* Two Column Layout for Experience */
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media print {
+      body {
+        margin: 0;
+        padding: 0;
+        background: white;
+      }
+      
+      .cv-container {
+        box-shadow: none;
+        margin: 0;
+        padding: 10mm 8mm;
+      }
+
+      .section {
+        page-break-inside: avoid;
+      }
+
+      .download-btn {
+        display: none;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Download Button -->
+  <button class="download-btn" onclick="downloadPDF()">
+    <span>📥</span>
+    <span>Download PDF</span>
+  </button>
+
+  <div class="cv-container">
+    <!-- ATS Keywords (Hidden but parseable) -->
+    <div class="ats-keywords">
+      Machine Learning Engineer, Artificial Intelligence, Deep Learning, Natural Language Processing, 
+      Computer Vision, MLOps, Data Engineer, Backend Developer, Full Stack, Python Developer,
+      TensorFlow, Keras, Neural Networks, Transformer Models, Attention Mechanisms, 
+      Large Language Models, GPT, Generative AI, Prompt Engineering, Model Fine-tuning,
+      API Development, RESTful Services, Microservices Architecture, Cloud Computing,
+      AWS, Azure, GCP, CI/CD, DevOps, Agile, Scrum, Git, Version Control,
+      Data Pipeline, ETL, Big Data, Real-time Processing, Stream Processing,
+      Statistical Analysis, Predictive Modeling, Feature Engineering, Model Deployment,
+      Software Development, System Design, Scalability, Performance Optimization,
+      Database Design, Data Modeling, Query Optimization, Caching Strategies,
+      Problem Solving, Critical Thinking, Team Collaboration, Technical Leadership,
+      Research and Development, Innovation, Continuous Learning, Adaptability
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+      <h1 class="name">TALHA ABDUL SATTAR</h1>
+      <p class="title">AI Backend Engineer • LangChain, RAG & ML Pipelines</p>
+      <div class="contact-bar">
+        <span>📧 56talhaali@gmail.com</span>
+        <span>📱 +92 310 4204075</span>
+        <span>🔗 <a href="https://www.linkedin.com/in/talha-abdul-sattar-a05485286/">LinkedIn</a></span>
+        <span>💻 <a href="https://github.com/Moon2311">GitHub/Moon2311</a></span>
+      </div>
+    </div>
+
+    <!-- Professional Summary -->
+    <div class="section">
+      <h2 class="section-title">Professional Summary</h2>
+      <p style="font-size: 10.5px; color: #374151; line-height: 1.6;">
+        Results-driven AI Backend Engineer with demonstrated expertise in architecting and deploying production-grade machine learning systems. Specialized in <strong>LangChain, RAG architectures, BERT, PyTorch</strong>, and scalable real-time data pipelines. Successfully delivered enterprise-scale applications leveraging <strong>FastAPI, PostgreSQL, Redis, Docker, Kubernetes</strong>, with advanced proficiency in <strong>CNN-based computer vision, fine-tuned LLMs (Ollama Phi3, LoRA/PEFT)</strong>, semantic search optimization, knowledge graph construction, ETL automation, and real-time analytics using <strong>Elasticsearch/Kibana</strong>. Proven ability to drive innovation, optimize system performance, and deliver measurable business impact through AI-powered solutions.
+      </p>
+    </div>
+
+    <!-- Work Experience -->
+    <div class="section">
+      <h2 class="section-title">Work Experience</h2>
+      
+      <div class="exp-grid">
+        <!-- Axelliant -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <div>
+              <div class="company">Axelliant</div>
+              <div class="role">Python System Engineer</div>
+            </div>
+            <div class="duration">Sep 2024 – Present</div>
+          </div>
+          <div class="exp-content">
+            <ul>
+              <li>Architected high-performance enterprise backend using FastAPI, Flask, PostgreSQL & Azure Synapse, reducing query latency by 40%</li>
+              <li>Designed Redis caching layer & connection pooling infrastructure handling 10K+ concurrent real-time sensor data streams</li>
+              <li>Automated ETL pipelines processing multi-format data with Pandas, NumPy, SciPy, improving data processing efficiency by 60%</li>
+              <li>Orchestrated microservices deployment with Docker + Kubernetes for scalable, fault-tolerant architecture</li>
+              <li>Integrated WebSockets, Google Maps & CarXe APIs enabling real-time fleet tracking and route optimization</li>
+              <li>Implemented RAG pipeline with Ollama Phi3 for intelligent SQL generation from natural language queries, improving query accuracy by 85%</li>
+              <li>Fine-tuned BERT models using PyTorch, LoRA/PEFT techniques for complex multi-intent query understanding</li>
+              <li>Developed production-grade CNNs with OpenCV achieving 92% accuracy in real-time object detection from video streams</li>
+              <li>Created interactive analytics dashboards using Matplotlib & Seaborn for actionable trend visualization and KPI tracking</li>
+              <li>Applied Scikit-learn for predictive maintenance modeling and anomaly detection, reducing system downtime by 35%</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Islame -->
+        <div class="experience-item">
+          <div class="exp-header">
+            <div>
+              <div class="company">Islame</div>
+              <div class="role">Backend & Data Analytics Engineer</div>
+            </div>
+            <div class="duration">Apr 2024 – Sep 2024</div>
+          </div>
+          <div class="exp-content">
+            <ul>
+              <li>Engineered secure Django/Flask backends with PostgreSQL integration and comprehensive API authentication mechanisms</li>
+              <li>Designed end-to-end analytics pipelines for Zakat calculations, donation tracking & Islamic finance compliance metrics</li>
+              <li>Performed advanced EDA, data cleaning, transformation & interactive dashboard development for financial transparency reporting</li>
+              <li>Fine-tuned LLM models (ServiceNow) via Google Colab for intelligent process automation, reducing manual effort by 50%</li>
+              <li>Developed interactive Kibana dashboards on Elasticsearch data enabling real-time operational insights and decision-making</li>
+              <li>Implemented comprehensive data validation frameworks & quality assurance checks ensuring regulatory compliance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Projects -->
+    <div class="section">
+      <h2 class="section-title">Key Projects</h2>
+
+      <div class="project-item">
+        <div class="project-header">
+          <div class="project-name">Rover AI – Health Plan Operating System</div>
+        </div>
+        <p class="project-desc">Designed and deployed AI-powered healthcare analytics platform featuring intelligent data ingestion, normalization, and orchestration workflows. Developed ML-powered Watchdog system providing 15+ disease risk predictions with 88% accuracy, implemented RAG pipelines for proactive risk detection, automated stop-loss quoting engine, and intelligent Data Wash module for AI-driven file format conversion. Integrated real-time alerting system, CRM connectivity, and microservices architecture for comprehensive benefits administration automation.</p>
+        <p class="tech-stack"><strong>Tech:</strong> FastAPI, BERT, RAG, Ollama Phi3, Elasticsearch, Kibana, ML Pipelines, PostgreSQL, Redis</p>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <div class="project-name">Internalapps – B2B Intelligence Platform with Dynamic RAG</div>
+        </div>
+        <p class="project-desc">Architected multi-source intelligence aggregation platform leveraging LangChain & Ollama for dynamic RAG-based contextual retrieval. Built asynchronous data processing pipelines, semantic query parsing with BERT embeddings, ChromaDB vector storage optimization, and fine-tuned Phi-3 models via LoRA/PEFT techniques. Integrated intelligent conversational AI chatbot across Slack, Microsoft Teams, and Google Meet using Recall.ai API for automated meeting summarization and action item extraction. Powered comprehensive web scraping infrastructure using Apify, Crawlee, and Playwright for real-time data acquisition.</p>
+        <p class="tech-stack"><strong>Tech:</strong> LangChain, RAG, Ollama Phi3, BERT, ChromaDB, Vector DB, Apify, Crawlee, Playwright, Recall.ai, Async Python</p>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <div class="project-name">Flite Transport (Ontologi.app) – Semantic Knowledge Platform</div>
+        </div>
+        <p class="project-desc">Developed enterprise-grade semantic knowledge management platform for large-scale ontology orchestration using graph databases and advanced reasoning engines. Implemented AI-powered natural language interfaces, LLM-driven semantic search with 90% precision, autonomous agent-based workflow automation, and real-time multi-source data ingestion pipelines. Extended platform capabilities for logistics fleet management incorporating WebSocket-based real-time tracking, role-based access control (RBAC), and predictive maintenance scheduling.</p>
+        <p class="tech-stack"><strong>Tech:</strong> Graph Database (Neo4j), Semantic Search, LLM Integration, Django REST Framework, WebSockets, PostgreSQL, RBAC</p>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <div class="project-name">AI-Powered Sports Analytics System <span class="fyp-badge">Final Year Project</span></div>
+        </div>
+        <p class="project-desc">Developed comprehensive end-to-end deep learning solution using CNNs, OpenCV, PyTorch & MediaPipe for advanced cricket performance analysis and biomechanical assessment. Implemented high-precision pose estimation algorithms, real-time joint-angle tracking with sub-degree accuracy, and temporal motion analysis for technique optimization. Engineered Flask-based backend API for model inference serving and React-powered analytics dashboard enabling visual performance insights, comparative analysis, and automated PDF report generation for coaching staff.</p>
+        <p class="tech-stack"><strong>Tech:</strong> PyTorch, OpenCV, MediaPipe, CNN Architecture, Pose Estimation, Flask REST API, React.js, Computer Vision</p>
+      </div>
+    </div>
+
+    <!-- Technical Skills -->
+    <div class="section">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <div class="skill-cat-title">Programming & Frameworks</div>
+          <div class="skill-items">Python, C/C++, SQL, JavaScript, FastAPI, Django, Flask, React.js, Node.js</div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-title">AI & Machine Learning</div>
+          <div class="skill-items">LangChain, LangGraph, RAG Architectures, BERT, Transformers, Ollama Phi3, LoRA/PEFT, PyTorch, TensorFlow, Scikit-learn, MediaPipe, Hugging Face</div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-title">Data Science & Computer Vision</div>
+          <div class="skill-items">Pandas, NumPy, SciPy, Matplotlib, Seaborn, Plotly, OpenCV, CNN, YOLO, Pose Estimation, Image Processing, EDA</div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-title">Databases & Search Engines</div>
+          <div class="skill-items">PostgreSQL, Redis, MongoDB, Elasticsearch, Kibana, ChromaDB, Pinecone, Neo4j Graph DB, Azure Synapse, Vector Databases</div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-title">DevOps & Cloud Infrastructure</div>
+          <div class="skill-items">Docker, Kubernetes, Microservices, CI/CD Pipelines, ETL Automation, WebSockets, AWS, Azure, Git, Linux</div>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-title">Web Scraping & Integration</div>
+          <div class="skill-items">Apify, Crawlee, Playwright, Selenium, Beautiful Soup, Recall.ai, Slack API, Microsoft Teams API, REST APIs, GraphQL</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <h2 class="section-title">Education & Certification</h2>
+      <div class="edu-item">
+        <div class="degree">Bachelor of Science in Software Engineering</div>
+        <div class="university">Minhaj University Lahore, Township Campus</div>
+        <div class="certification">Professional Certification in Artificial Intelligence & Machine Learning – National Vocational & Technical Training Commission (NAVTTC)</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function downloadPDF() {
+      // Hide the download button before printing
+      const btn = document.querySelector('.download-btn');
+      btn.style.display = 'none';
+      
+      // Trigger print dialog
+      window.print();
+      
+      // Show the button again after print dialog closes
+      setTimeout(() => {
+        btn.style.display = 'flex';
+      }, 100);
+    }
+
+    // Optional: Keyboard shortcut (Ctrl+P or Cmd+P)
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+        e.preventDefault();
+        downloadPDF();
+      }
+    });
+  </script>
+</body>
+</html>
