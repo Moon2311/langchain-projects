@@ -27,3 +27,14 @@ scikit-learn
 
 # frient-end creating laibrary 
 streamlit
+
+langchain
+langgraph
+openai
+anthropic
+google-genai
+transformers
+torch
+sentence-transformers
+chromadb
+streamlit
